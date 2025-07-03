@@ -3,7 +3,7 @@ import { Agendamento } from './agendamento.entity';
 
 @Entity()
 export class Barbeiro {
-  @PrimaryGeneratedColumn({ name: 'id_barbeiro' })
+  @PrimaryGeneratedColumn('increment', { name: 'id_barbeiro' })
   idBarbeiro: number;
 
   @Column({ nullable: false })

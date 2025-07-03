@@ -1,9 +1,9 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Agendamento } from './agendamento.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Agendservico } from './agendservico.entity';
 
 @Entity()
 export class Servico {
-  @PrimaryGeneratedColumn({ name: 'id_servico' })
+  @PrimaryGeneratedColumn('increment', { name: 'id_servico' })
   idservico: number;
 
   @Column({ nullable: false })
@@ -18,6 +18,6 @@ export class Servico {
   @Column({ default: true })
   isActive: boolean;
 
-  @ManyToMany(() => Agendamento, (agendamento) => agendamento.servicos)
-  agendamentos: Agendamento[];
+  @OneToMany(() => Agendservico, (agendservico) => agendservico.servico)
+  agendservico: Agendservico;
 }

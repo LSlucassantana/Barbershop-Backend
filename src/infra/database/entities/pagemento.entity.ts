@@ -2,17 +2,20 @@ import {
   Column,
   Entity,
   JoinColumn,
-  OneToOne,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Agendamento } from './agendamento.entity';
 
 @Entity()
 export class Pagamento {
-  @PrimaryGeneratedColumn({ name: 'id_pagamento' })
-  idPagamento: number;
+  @PrimaryGeneratedColumn('uuid', { name: 'id_pagamento' })
+  idPagamento: string;
 
-  @OneToOne(() => Agendamento, (agendamento) => agendamento.pagamento)
+  @PrimaryGeneratedColumn({ name: 'id_agendamento' })
+  idAgendamento: number;
+
+  @ManyToOne(() => Agendamento, (agendamento) => agendamento.pagamento)
   @JoinColumn({ name: 'id_agendamento' })
   agendamento: Agendamento;
 

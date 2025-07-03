@@ -3,23 +3,31 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Cliente } from './cliente.entity';
 import { Barbeiro } from './barbeiro.entity';
-import { Servico } from './servico.entity';
-import { Pagamento } from './pagamento.entity';
+import { Cliente } from './cliente.entity';
+
 import { Opcao } from './opcao.enum';
+import { Pagamento } from './pagemento.entity';
+import { Agendservico } from './agendservico.entity';
 
 @Entity()
 export class Agendamento {
-  @PrimaryGeneratedColumn({ name: 'id_agendamento' })
+  @PrimaryGeneratedColumn('increment', { name: 'id_agendamento' })
   idAgendamento: number;
+
+  @Column({ name: 'id_cliente' })
+  idCliente: string;
 
   @ManyToOne(() => Cliente, (cliente) => cliente.agendamentos)
   @JoinColumn({ name: 'id_cliente' })
   cliente: Cliente;
+
+  @Column({ name: 'id_barbeiro' })
+  idBarbeiro: number;
 
   @ManyToOne(() => Barbeiro, (barbeiro) => barbeiro.agendamentos)
   @JoinColumn({ name: 'id_barbeiro' })
@@ -34,29 +42,12 @@ export class Agendamento {
   @Column({ nullable: true })
   observacao: string;
 
-  @Column({ type: 'enum', enum: Opcao, default: Opcao.Agendado })
+  @Column({ type: 'simple-enum', enum: Opcao, default: Opcao.Agendado })
   status: Opcao;
-
-  @ManyToMany(() => Servico, (servico) => servico.agendamentos)
-  @JoinTable({
-    name: 'agendamento_servico',
-    joinColumn: {
-      name: 'id_agendamento',
-      referencedColumnName: 'idAgendamento',
-    },
-    inverseJoinColumn: {
-      name: 'id_servico',
-      referencedColumnName: 'idServico',
-    },
-  })
-  servicos: Servico[];
 
   @OneToOne(() => Pagamento, (pagamento) => pagamento.agendamento)
   pagamento: Pagamento;
 
-  @Column({ default: false })
-  isAdmin: boolean;
-
-  @Column({ default: true })
-  isActive: boolean;
+  @OneToMany(() => Agendservico, (agendservico) => agendservico.agendamento)
+  agendservico: Agendservico;
 }
