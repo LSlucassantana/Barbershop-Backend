@@ -3,7 +3,6 @@ import { DataBaseModule } from './database/database.module';
 
 @Module({
   imports: [DataBaseModule],
-  controllers: [],
-  providers: [],
+  exports: [DataBaseModule],
 })
 export class InfraModule {}

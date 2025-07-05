@@ -6,6 +6,8 @@ import { Barbeiro } from './entities/barbeiro.entity';
 import { Cliente } from './entities/cliente.entity';
 import { Pagamento } from './entities/pagemento.entity';
 import { Servico } from './entities/servico.entity';
+import { Example } from './entities/example.entity';
+import { ExampleService } from './services/example.service';
 
 @Module({
   imports: [
@@ -23,12 +25,22 @@ import { Servico } from './entities/servico.entity';
         Agendamento,
         Agendservico,
         Pagamento,
+        Example,
       ],
       synchronize: true,
       ssl: { rejectUnauthorized: false },
     }),
+    TypeOrmModule.forFeature([
+      Example,
+      Cliente,
+      Barbeiro,
+      Servico,
+      Agendamento,
+      Agendservico,
+      Pagamento,
+    ]),
   ],
-  controllers: [],
-  providers: [],
+  exports: [ExampleService],
+  providers: [ExampleService],
 })
 export class DataBaseModule {}
