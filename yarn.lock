@@ -5734,6 +5734,11 @@ v8-to-istanbul@^9.0.1:
     "@types/istanbul-lib-coverage" "^2.0.1"
     convert-source-map "^2.0.0"
 
+validation-br@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/validation-br/-/validation-br-1.5.2.tgz#b9af812765e08437e5e30c44151d84dc8404e0eb"
+  integrity sha512-CW00077XpqAOd/24VG2Vv+C4nx+yABw4BFsqvbLXD5wTO+Mp0g/6fK7tpdf2+PnhfUGItsX+TKIpJpnBz5V4lA==
+
 validator@^13.9.0:
   version "13.15.15"
   resolved "https://registry.yarnpkg.com/validator/-/validator-13.15.15.tgz#246594be5671dc09daa35caec5689fcd18c6e7e4"

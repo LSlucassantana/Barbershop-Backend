@@ -1,7 +1,7 @@
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Cliente } from '../entities/cliente.entity';
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 
 @Injectable()
 export class ClienteService {
@@ -18,6 +18,18 @@ export class ClienteService {
     senha: string;
     cpf: string;
   }) {
+    const clienteExistente = await this.clienteRepository.findOneBy({
+      cpf: dados.cpf,
+    });
+    if (clienteExistente) {
+      throw new BadRequestException('CPF já está cadastrado.');
+    }
+    const emailExistente = await this.clienteRepository.findOneBy({
+      email: dados.email,
+    });
+    if (emailExistente) {
+      throw new BadRequestException('Email já está cadastrado.');
+    }
     const cliente = this.clienteRepository.create({
       nome: dados.nome,
       dataNasc: dados.dataNasc,

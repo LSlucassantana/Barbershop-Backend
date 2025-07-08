@@ -6,22 +6,22 @@ export class Cliente {
   @PrimaryGeneratedColumn('uuid', { name: 'id_cliente' })
   idCliente: string;
 
-  @Column({ nullable: false })
+  @Column({ type: 'varchar', length: 100, nullable: false })
   nome: string;
 
-  @Column({ nullable: false, name: 'data_nasc' })
+  @Column({ type: 'date', nullable: false, name: 'data_nasc' })
   dataNasc: Date;
 
-  @Column({ nullable: false })
+  @Column({ type: 'varchar', length: 15, nullable: false })
   telefone: string;
 
-  @Column({ nullable: false })
+  @Column({ type: 'varchar', unique: true, nullable: false })
   email: string;
 
-  @Column({ nullable: false })
+  @Column({ type: 'varchar', nullable: false })
   senha: string;
 
-  @Column({ nullable: false })
+  @Column({ type: 'varchar', length: 11, unique: true, nullable: false })
   cpf: string;
 
   @OneToMany(() => Agendamento, (agendamento) => agendamento.cliente)

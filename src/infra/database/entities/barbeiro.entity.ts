@@ -6,19 +6,19 @@ export class Barbeiro {
   @PrimaryGeneratedColumn('increment', { name: 'id_barbeiro' })
   idBarbeiro: number;
 
-  @Column({ nullable: false })
+  @Column({ type: 'varchar', length: 100, nullable: false })
   nome: string;
 
-  @Column({ nullable: false })
+  @Column({ type: 'varchar', length: 15, nullable: false })
   telefone: string;
 
-  @Column({ nullable: false })
+  @Column({ type: 'varchar', unique: true, nullable: false })
   email: string;
 
   @Column({ nullable: false })
   senha: string;
 
-  @Column({ nullable: false })
+  @Column({ type: 'varchar', length: 11, unique: true, nullable: false })
   cpf: string;
 
   @Column({ default: false })

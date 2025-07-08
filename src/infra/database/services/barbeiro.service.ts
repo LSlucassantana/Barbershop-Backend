@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Barbeiro } from '../entities/barbeiro.entity';
@@ -17,6 +17,18 @@ export class BarbeiroService {
     senha: string;
     cpf: string;
   }) {
+    const barbeiroExistente = await this.barbeiroRepository.findOneBy({
+      cpf: dados.cpf,
+    });
+    if (barbeiroExistente) {
+      throw new BadRequestException('CPF já está cadastrado.');
+    }
+    const emailExistente = await this.barbeiroRepository.findOneBy({
+      email: dados.email,
+    });
+    if (emailExistente) {
+      throw new BadRequestException('Email já está cadastrado.');
+    }
     const barbeiro = this.barbeiroRepository.create({
       nome: dados.nome,
       telefone: dados.telefone,
