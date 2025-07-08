@@ -8,6 +8,9 @@ import { Pagamento } from './entities/pagemento.entity';
 import { Servico } from './entities/servico.entity';
 import { Example } from './entities/example.entity';
 import { ExampleService } from './services/example.service';
+import { ClienteService } from './services/cliente.service';
+import { BarbeiroService } from './services/barbeiro.service';
+import { AgendamentoService } from './services/agendamento.service';
 
 @Module({
   imports: [
@@ -40,7 +43,17 @@ import { ExampleService } from './services/example.service';
       Pagamento,
     ]),
   ],
-  exports: [ExampleService],
-  providers: [ExampleService],
+  exports: [
+    ExampleService,
+    ClienteService,
+    BarbeiroService,
+    AgendamentoService,
+  ],
+  providers: [
+    ExampleService,
+    ClienteService,
+    BarbeiroService,
+    AgendamentoService,
+  ],
 })
 export class DataBaseModule {}
