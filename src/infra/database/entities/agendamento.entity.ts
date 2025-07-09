@@ -10,9 +10,9 @@ import {
 import { Barbeiro } from './barbeiro.entity';
 import { Cliente } from './cliente.entity';
 
-import { Opcao } from './opcao.enum';
-import { Pagamento } from './pagemento.entity';
 import { Agendservico } from './agendservico.entity';
+import { Pagamento } from './pagemento.entity';
+import { Opcao } from 'src/domain/agendamento/dtos/agendamento.dto';
 
 @Entity()
 export class Agendamento {
@@ -42,7 +42,7 @@ export class Agendamento {
   @Column({ nullable: true })
   observacao: string;
 
-  @Column({ type: 'simple-enum', enum: Opcao, default: Opcao.Agendado })
+  @Column({ type: 'simple-enum', enum: Opcao, default: Opcao.agendado })
   status: Opcao;
 
   @OneToOne(() => Pagamento, (pagamento) => pagamento.agendamento)

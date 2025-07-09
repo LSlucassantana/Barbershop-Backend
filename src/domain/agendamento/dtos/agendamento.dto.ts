@@ -6,9 +6,10 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
-export enum Opcao2 {
+export enum Opcao {
   agendado = 'Agendado',
   cancelado = 'Cancelado',
+  Atendido = 'Atendido',
 }
 
 export class AgendamentoDTO {
@@ -31,6 +32,6 @@ export class AgendamentoDTO {
   observacao: string;
 
   @IsOptional()
-  @IsEnum(Opcao2)
-  status: string;
+  @IsEnum(Opcao)
+  status: Opcao; //string ou opcao
 }

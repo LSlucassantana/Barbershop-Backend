@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ExampleController } from './example/new-example.controller';
 import { DataBaseModule } from 'src/infra/database/database.module';
-import { ClienteController } from './example/dtos/cliente.controller';
-import { BarbeiroController } from './example/dtos/barbeiro.controller';
-import { AgendamentoController } from './example/dtos/agendamento.controller';
+import { AgendamentoController } from './agendamento/agendamento.controller';
+import { BarbeiroController } from './barbeiro/barbeiro.controller';
+import { ClienteController } from './cliente/cliente.controller';
+import { ExampleController } from './example/new-example.controller';
 
 @Module({
   imports: [DataBaseModule],

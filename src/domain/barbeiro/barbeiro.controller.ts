@@ -1,6 +1,6 @@
 import { Body, Controller, Inject, Post } from '@nestjs/common';
 import { BarbeiroService } from 'src/infra/database/services/barbeiro.service';
-import { BarbeiroDTO } from './barbeiro.dto';
+import { BarbeiroDTO } from './dtos/barbeiro.dto';
 
 @Controller('/barbeiro')
 export class BarbeiroController {

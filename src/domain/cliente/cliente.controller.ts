@@ -1,6 +1,6 @@
 import { Body, Controller, Inject, Post } from '@nestjs/common';
 import { ClienteService } from 'src/infra/database/services/cliente.service';
-import { ClienteDTO } from './cliente.dto';
+import { ClienteDTO } from './dtos/cliente.dto';
 
 @Controller('/cliente')
 export class ClienteController {
