@@ -33,5 +33,5 @@ export class AgendamentoDTO {
 
   @IsOptional()
   @IsEnum(Opcao)
-  status: Opcao; //string ou opcao
+  status: string; //string ou opcao
 }

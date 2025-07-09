@@ -6,28 +6,32 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Agendamento } from './agendamento.entity';
+import { Opcao2 } from 'src/domain/pagamento/dtos/pagamento.dtos';
 
 @Entity()
 export class Pagamento {
   @PrimaryGeneratedColumn('uuid', { name: 'id_pagamento' })
   idPagamento: string;
 
-  @PrimaryGeneratedColumn({ name: 'id_agendamento' })
+  @Column({ type: 'int', name: 'id_agendamento' })
   idAgendamento: number;
 
   @ManyToOne(() => Agendamento, (agendamento) => agendamento.pagamento)
   @JoinColumn({ name: 'id_agendamento' })
   agendamento: Agendamento;
 
-  @Column({ nullable: false })
+  @Column({ type: 'decimal', precision: 6, scale: 2, nullable: false })
   valor: number;
 
-  @Column({ nullable: false })
-  formaPagamento: string;
+  @Column({ type: 'simple-enum', enum: Opcao2 })
+  formaPagmento: Opcao2;
 
-  @Column({ nullable: false })
+  @Column({ type: 'timestamp', nullable: false })
   dataPagemento: Date;
 
-  @Column({ default: true })
+  @Column({ nullable: true })
+  observacao: string;
+
+  @Column({ type: 'boolean', default: true })
   isActive: boolean;
 }

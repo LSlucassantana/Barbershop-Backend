@@ -18,6 +18,7 @@ export class AgendamentoController {
       data: request.data,
       hora: request.hora,
       observacao: request.observacao,
+      status: request.status,
     });
     return result;
   }
