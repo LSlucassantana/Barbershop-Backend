@@ -6,16 +6,16 @@ export class Servico {
   @PrimaryGeneratedColumn('increment', { name: 'id_servico' })
   idservico: number;
 
-  @Column({ nullable: false })
+  @Column({ type: 'varchar', length: 100, nullable: false })
   nome: string;
 
-  @Column({ nullable: false })
+  @Column({ type: 'decimal', precision: 6, scale: 2, nullable: false })
   preco: number;
 
-  @Column({ nullable: false })
+  @Column({ type: 'int', nullable: false })
   duracao: number;
 
-  @Column({ default: true })
+  @Column({ type: 'boolean', default: true })
   isActive: boolean;
 
   @OneToMany(() => Agendservico, (agendservico) => agendservico.servico)

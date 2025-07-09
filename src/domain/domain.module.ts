@@ -4,6 +4,7 @@ import { AgendamentoController } from './agendamento/agendamento.controller';
 import { BarbeiroController } from './barbeiro/barbeiro.controller';
 import { ClienteController } from './cliente/cliente.controller';
 import { ExampleController } from './example/new-example.controller';
+import { ServicoController } from './servico/servico.controller';
 
 @Module({
   imports: [DataBaseModule],
@@ -12,6 +13,7 @@ import { ExampleController } from './example/new-example.controller';
     ClienteController,
     BarbeiroController,
     AgendamentoController,
+    ServicoController,
   ],
   providers: [],
 })

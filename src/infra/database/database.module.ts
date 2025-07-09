@@ -11,6 +11,7 @@ import { ExampleService } from './services/example.service';
 import { ClienteService } from './services/cliente.service';
 import { BarbeiroService } from './services/barbeiro.service';
 import { AgendamentoService } from './services/agendamento.service';
+import { ServicoService } from './services/servico.service';
 
 @Module({
   imports: [
@@ -48,12 +49,14 @@ import { AgendamentoService } from './services/agendamento.service';
     ClienteService,
     BarbeiroService,
     AgendamentoService,
+    ServicoService,
   ],
   providers: [
     ExampleService,
     ClienteService,
     BarbeiroService,
     AgendamentoService,
+    ServicoService,
   ],
 })
 export class DataBaseModule {}
