@@ -1,6 +1,7 @@
 import { Body, Controller, Inject, Post } from '@nestjs/common';
-import { AgendamentoDTO } from './agendamento.dto';
+
 import { AgendamentoService } from 'src/infra/database/services/agendamento.service';
+import { AgendamentoDTO } from './agendamento.dto';
 
 @Controller('/agendamento')
 export class AgendamentoController {
