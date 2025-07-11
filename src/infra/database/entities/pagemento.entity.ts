@@ -24,10 +24,10 @@ export class Pagamento {
   valor: number;
 
   @Column({ type: 'simple-enum', enum: Opcao2 })
-  formaPagmento: Opcao2;
+  formaPagamento: Opcao2;
 
   @Column({ type: 'timestamp', nullable: false })
-  dataPagemento: Date;
+  dataPagamento: Date;
 
   @Column({ nullable: true })
   observacao: string;

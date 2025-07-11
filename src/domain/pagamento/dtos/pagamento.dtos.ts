@@ -14,17 +14,17 @@ export enum Opcao2 {
 }
 
 export class PagamentoDTO {
-  @IsString()
-  idAgendamento: string;
+  @IsNumber()
+  idAgendamento: number;
   @Type(() => Number)
   @IsNumber()
   @IsPositive()
   valor: number;
   @IsEnum(Opcao2)
-  status: string;
+  formaPagamento: string;
   @IsDate()
   @Transform(({ value }) => new Date(`${value}T12:00:00`)) // Setando 12:00:00 para não ter problemas com o timezone
-  dataPagmento: Date;
+  dataPagamento: Date;
   @IsOptional()
   @IsString()
   observacao: string;
